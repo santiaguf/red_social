@@ -95,7 +95,7 @@ public class UsuarioDAO {
                 if(rs.next()){
                     System.out.println("login correcto!");
                     login.setId_usuario(rs.getInt("id_usuario"));
-                    login.setCorreo(rs.getString("id_usuario"));
+                    login.setCorreo(rs.getString("id_correo"));
                     login.setNombre_completo(rs.getString("nombre_completo"));
                 }else{
                     System.out.println("login failed");
