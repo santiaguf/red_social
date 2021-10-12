@@ -3,88 +3,56 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.santiago.red_social;
+
+
 import java.util.Scanner;
+
+import com.santiago.red_social.model.Usuario;
+import com.santiago.red_social.service.UsuarioService;
 
 /**
  *
- * @author ohmyfi
+ * @author santiaguf
  */
 public class Inicio {
-    
-    public static void main(String[] args) {            
-        menuPrincipal();
-    } 
-    
-    public static void menuPrincipal(){
-        //instanciamos la clase scanner para leer datos
-        Scanner sc = new Scanner(System.in);  
-        int opcion = 0;  
 
-        //primer menú
+    public static void main(String[] args) {
+        //create an instance of Scanner class to read user input
+        Scanner sc = new Scanner(System.in);
+        menuPrincipal(sc);
+        sc.close();
+    }
+
+    public static void menuPrincipal(Scanner sc){
+
+        int opcion = 0;
+
+        //First Menu
         do{
-            System.out.println("===================");
-            System.out.println("\n Mini red social \n");
-            System.out.println("1. Registrarse");
-            System.out.println("2. Iniciar sesión");
-            System.out.println("3. salir \n");
-            //leemos la opción del usuario
+            System.out.println("=================== \n"
+                + "\n Mini red social \n"
+                + "1. Registrarse \n"
+                + "2. Iniciar sesión \n"
+                + "3. salir \n");
+            //Read user input
             opcion = sc.nextInt();
 
             switch (opcion){
                 case 1:
-                    UsuarioService.crearUsuario();
+                    UsuarioService.crearUsuario(sc);
                     break;
                 case 2:
-                    Usuario resultado = UsuarioService.iniciarSesion();
+                    Usuario resultado = UsuarioService.iniciarSesion(sc);
                     if(resultado.getId_usuario() > 0){
-                        menuSesion(resultado);
-                    }   
+                        MenuSesion.menuSesion(resultado, sc);
+                    }
                     break;
                 default:
                     break;
             }
         }while(opcion != 3);
     }
-    
-    public static void menuSesion(Usuario usuario){
-        //instanciamos la clase scanner para leer datos
-        Scanner sc = new Scanner(System.in);  
-        int opcion = 0; 
 
-        //menú cuando inicia sesión
-        do{
-            System.out.println("===================");
-            System.out.println("\n red social, hola "+usuario.getNombre_completo()+" \n");
-            System.out.println("1. escribir mensaje");
-            System.out.println("2. leer mensajes");
-            System.out.println("3. eliminar mensaje");
-            System.out.println("4. editar perfil");
-            System.out.println("5. ver usuarios");
-            System.out.println("6. cerrar sesión \n");
-            //leemos la opción del usuario
-            opcion = sc.nextInt();
-
-            switch (opcion){
-                case 1:
-                    MensajeService.crearMensaje(usuario);
-                    break;
-                case 2:
-                    MensajeService.listarmensajes();
-                    break;
-                case 3:
-                    MensajeService.borrarMensaje(usuario);
-                    break;
-                case 4:
-                    UsuarioService.editarUsuario(usuario);
-                    break;
-                case 5:
-                    UsuarioService.listarUsuarios();
-                    break;    
-                default:
-                    break;
-            }
-        }while(opcion != 6);     
-    }
-    
 }
