@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.santiago.red_social;
+package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ import io.github.cdimascio.dotenv.Dotenv;
  *
  * @author santiaguf
  */
-public class Conexion {
+public class DbConnection {
 
     public Connection get_connection(){
 

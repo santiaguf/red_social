@@ -8,14 +8,14 @@ package com.santiago.red_social.service;
 import java.util.Scanner;
 import org.apache.commons.codec.digest.DigestUtils;
 
-import com.santiago.red_social.dao.UsuarioDAO;
-import com.santiago.red_social.model.Usuario;
+import com.santiago.red_social.dao.UserDAO;
+import com.santiago.red_social.model.User;
 
 /**
  *
  * @author santiaguf
  */
-public class UsuarioService {
+public class UserService {
 
     public static void createUser(Scanner sc){
         System.out.println("indica tu nombre completo");
@@ -27,15 +27,15 @@ public class UsuarioService {
 
         password = getMd5Hash(password);
 
-        Usuario newUser = new Usuario(0, email, password, fullName);
-        UsuarioDAO.createUserOnDB(newUser);
+        User newUser = new User(0, email, password, fullName);
+        UserDAO.createUserOnDB(newUser);
     }
 
     public static void listUsers(){
-        UsuarioDAO.listUsersOnDB();
+        UserDAO.listUsersOnDB();
     }
 
-    public static void editUser(Usuario usuario, Scanner sc) {
+    public static void editUser(User usuario, Scanner sc) {
         System.out.println("indica tu nombre completo");
         String fullName = sc.nextLine();
         System.out.println("indica tu email");
@@ -44,15 +44,15 @@ public class UsuarioService {
         String password = sc.nextLine();
 
         String passwordHashed = getMd5Hash(password);
-        Usuario updatedUser = new Usuario(usuario.getUserId(), email, passwordHashed, fullName);
-        UsuarioDAO.editUserOnDB(updatedUser);
+        User updatedUser = new User(usuario.getUserId(), email, passwordHashed, fullName);
+        UserDAO.editUserOnDB(updatedUser);
     }
 
     public static String getMd5Hash(String password){
         return DigestUtils.md5Hex(password);
     }
 
-    public static Usuario login(Scanner sc){
+    public static User login(Scanner sc){
     	//create an instance of Scanner class to read user input
         System.out.println("indica tu email");
         String email = sc.next();
@@ -61,8 +61,8 @@ public class UsuarioService {
 
         String passwordHashed = getMd5Hash(password);
 
-        Usuario login = new Usuario(email, passwordHashed);
-        Usuario result = UsuarioDAO.loginDB(login);
+        User login = new User(email, passwordHashed);
+        User result = UserDAO.loginDB(login);
         return result;
     }
 

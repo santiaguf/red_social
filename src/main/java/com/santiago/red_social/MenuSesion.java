@@ -2,13 +2,13 @@ package com.santiago.red_social;
 
 import java.util.Scanner;
 
-import com.santiago.red_social.model.Usuario;
-import com.santiago.red_social.service.MensajeService;
-import com.santiago.red_social.service.UsuarioService;
+import com.santiago.red_social.model.User;
+import com.santiago.red_social.service.MessageService;
+import com.santiago.red_social.service.UserService;
 
 public class MenuSesion {
 
-    public static void menuSesion(Usuario usuario, Scanner sc){
+    public static void menuSesion(User usuario, Scanner sc){
         int option = 0;
 
         //menu when session starts
@@ -26,19 +26,19 @@ public class MenuSesion {
 
             switch (option){
                 case 1:
-                    MensajeService.createMessage(usuario, sc);
+                    MessageService.createMessage(usuario, sc);
                     break;
                 case 2:
-                    MensajeService.listMessages();
+                    MessageService.listMessages();
                     break;
                 case 3:
-                    MensajeService.deleteMessage(usuario, sc);
+                    MessageService.deleteMessage(usuario, sc);
                     break;
                 case 4:
-                    UsuarioService.editUser(usuario, sc);
+                    UserService.editUser(usuario, sc);
                     break;
                 case 5:
-                    UsuarioService.listUsers();
+                    UserService.listUsers();
                     break;
                 default:
                     break;

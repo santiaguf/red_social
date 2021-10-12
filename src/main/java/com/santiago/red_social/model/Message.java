@@ -9,7 +9,7 @@ package com.santiago.red_social.model;
  *
  * @author santiaguf
  */
-public class Mensaje {
+public class Message {
     //attributes
     int messageId;
     String message;
@@ -19,23 +19,23 @@ public class Mensaje {
     int userId;
 
     //constructors
-    public Mensaje(){
+    public Message(){
     }
 
     //delete message by Id
-    public Mensaje(int messageId, int userId) {
+    public Message(int messageId, int userId) {
         this.messageId = messageId;
         this.userId = userId;
     }
 
     //create message
-    public Mensaje(String message, int userId) {
+    public Message(String message, int userId) {
         this.message = message;
         this.userId = userId;
     }
 
     //list messages
-    public Mensaje(int messageId, String message, String date, String fullName) {
+    public Message(int messageId, String message, String date, String fullName) {
         this.messageId = messageId;
         this.message = message;
         this.date = date;

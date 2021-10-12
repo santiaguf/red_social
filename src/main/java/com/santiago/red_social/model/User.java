@@ -9,7 +9,7 @@ package com.santiago.red_social.model;
  *
  * @author santiaguf
  */
-public class Usuario {
+public class User {
     //atributos
     int userId;
     String email;
@@ -17,29 +17,29 @@ public class Usuario {
     String fullName;
 
     //constructores
-    public Usuario(){
+    public User(){
     }
 
     //constructor para borrar usuario
-    public Usuario(int userId) {
+    public User(int userId) {
         this.userId = userId;
     }
 
     //constructor para iniciar sesión
-    public Usuario(String email, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
     //constructor para traer datos de inicio de sesión
-    public Usuario(int userId, String email, String fullName) {
+    public User(int userId, String email, String fullName) {
         this.userId = userId;
         this.email = email;
         this.fullName = fullName;
     }
 
     //constructor para crear, editar usuario
-    public Usuario(int userId, String email, String password, String fullName) {
+    public User(int userId, String email, String password, String fullName) {
         this.userId = userId;
         this.email = email;
         this.password = password;

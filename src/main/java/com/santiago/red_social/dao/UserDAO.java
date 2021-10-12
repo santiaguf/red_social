@@ -10,17 +10,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.santiago.red_social.Conexion;
-import com.santiago.red_social.model.Usuario;
+import com.santiago.red_social.model.User;
+
+import database.DbConnection;
 
 /**
  *
  * @author santiaguf
  */
-public class UsuarioDAO {
+public class UserDAO {
 
-    public static void createUserOnDB(Usuario usuario){
-        Conexion dbConnection = new Conexion();
+    public static void createUserOnDB(User usuario){
+        DbConnection dbConnection = new DbConnection();
         try (Connection conexion = dbConnection.get_connection()) {
                 PreparedStatement ps=null;
                 try {
@@ -40,7 +41,7 @@ public class UsuarioDAO {
     }
 
     public static void listUsersOnDB(){
-        Conexion dbConnection = new Conexion();
+        DbConnection dbConnection = new DbConnection();
         try(Connection conexion = dbConnection.get_connection();){
             PreparedStatement ps=null;
             ResultSet rs=null;
@@ -61,8 +62,8 @@ public class UsuarioDAO {
         }
     }
 
-    public static void editUserOnDB(Usuario usuario){
-        Conexion dbConnection = new Conexion();
+    public static void editUserOnDB(User usuario){
+        DbConnection dbConnection = new DbConnection();
         try (Connection conexion = dbConnection.get_connection()) {
             PreparedStatement ps=null;
             try {
@@ -82,8 +83,8 @@ public class UsuarioDAO {
         }
     }
 
-    public static Usuario loginDB(Usuario usuario){
-        Conexion dbConnection = new Conexion();
+    public static User loginDB(User usuario){
+        DbConnection dbConnection = new DbConnection();
         try(Connection conexion = dbConnection.get_connection();){
             PreparedStatement ps=null;
             ResultSet rs=null;
@@ -93,7 +94,7 @@ public class UsuarioDAO {
                 ps.setString(1, usuario.getEmail());
                 ps.setString(2, usuario.getPassword());
                 rs=ps.executeQuery();
-                Usuario login = new Usuario();
+                User login = new User();
                 if(rs.next()){
                     System.out.println("login correcto!");
                     login.setUserId(rs.getInt("id_usuario"));

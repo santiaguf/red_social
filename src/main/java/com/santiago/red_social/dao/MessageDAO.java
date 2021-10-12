@@ -10,17 +10,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.santiago.red_social.Conexion;
-import com.santiago.red_social.model.Mensaje;
+import com.santiago.red_social.model.Message;
+
+import database.DbConnection;
 
 /**
  *
  * @author santiaguf
  */
-public class MensajeDAO {
-    public static void createMessageDB(Mensaje mensaje){
-        Conexion db_connect = new Conexion();
-        try (Connection conexion = db_connect.get_connection()) {
+public class MessageDAO {
+    public static void createMessageDB(Message mensaje){
+        DbConnection dbConnection = new DbConnection();
+        try (Connection conexion = dbConnection.get_connection()) {
                 PreparedStatement ps=null;
                 try {
                     String query="insert into mensajes(id_usuario,mensaje,fecha) values (?,?,CURRENT_TIMESTAMP)";
@@ -38,8 +39,8 @@ public class MensajeDAO {
     }
 
     public static void listMessagesDB(){
-        Conexion db_connect = new Conexion();
-        try(Connection conexion = db_connect.get_connection()){
+        DbConnection dbConnection = new DbConnection();
+        try(Connection conexion = dbConnection.get_connection()){
             PreparedStatement ps=null;
             ResultSet rs=null;
             try {
@@ -60,8 +61,8 @@ public class MensajeDAO {
         }
     }
 
-    public static void deleteMessageDB(Mensaje mensaje){
-        Conexion db_connect = new Conexion();
+    public static void deleteMessageDB(Message mensaje){
+        DbConnection db_connect = new DbConnection();
         try(Connection conexion = db_connect.get_connection()){
             PreparedStatement ps=null;
             try {

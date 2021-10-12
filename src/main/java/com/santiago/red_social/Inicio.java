@@ -9,9 +9,8 @@ package com.santiago.red_social;
 
 import java.util.Scanner;
 
-import com.santiago.red_social.model.Usuario;
-import com.santiago.red_social.service.UsuarioService;
-
+import com.santiago.red_social.model.User;
+import com.santiago.red_social.service.UserService;
 /**
  *
  * @author santiaguf
@@ -41,10 +40,10 @@ public class Inicio {
 
             switch (option){
                 case 1:
-                    UsuarioService.createUser(sc);
+                    UserService.createUser(sc);
                     break;
                 case 2:
-                    Usuario resultado = UsuarioService.login(sc);
+                    User resultado = UserService.login(sc);
                     if(resultado.getUserId() > 0){
                         MenuSesion.menuSesion(resultado, sc);
                     }
