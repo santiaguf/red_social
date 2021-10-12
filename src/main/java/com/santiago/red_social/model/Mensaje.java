@@ -11,77 +11,75 @@ package com.santiago.red_social.model;
  */
 public class Mensaje {
     //attributes
-    int id_mensaje;
-    String mensaje;
-    String fecha;
+    int messageId;
+    String message;
+    String date;
+    String fullName;
     //foreign attributes
-    int id_usuario;
-    String nombre_completo;
-    
+    int userId;
+
     //constructors
     public Mensaje(){
     }
 
     //delete message by Id
-    public Mensaje(int id_mensaje, int id_usuario) {
-        this.id_mensaje = id_mensaje;
-        this.id_usuario = id_usuario;
+    public Mensaje(int messageId, int userId) {
+        this.messageId = messageId;
+        this.userId = userId;
     }
-    
+
     //create message
-    public Mensaje(String mensaje, int id_usuario) {
-        this.mensaje = mensaje;
-        this.id_usuario = id_usuario;
+    public Mensaje(String message, int userId) {
+        this.message = message;
+        this.userId = userId;
     }
-    
+
     //list messages
-    public Mensaje(int id_mensaje, String mensaje, String fecha, String nombre_completo) {
-        this.id_mensaje = id_mensaje;
-        this.mensaje = mensaje;
-        this.fecha = fecha;
-        this.nombre_completo = nombre_completo;
+    public Mensaje(int messageId, String message, String date, String fullName) {
+        this.messageId = messageId;
+        this.message = message;
+        this.date = date;
+        this.fullName = fullName;
     }
-    
+
     //getters and setters
-    public int getId_mensaje() {
-        return id_mensaje;
+    public int getmessageId() {
+        return messageId;
     }
 
-    public void setId_mensaje(int id_mensaje) {
-        this.id_mensaje = id_mensaje;
+    public void setmessageId(int messageId) {
+        this.messageId = messageId;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getDate() {
+        return date;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getNombre_completo() {
-        return nombre_completo;
+    public String getfullName() {
+        return fullName;
     }
 
-    public void setNombre_completo(String nombre_completo) {
-        this.nombre_completo = nombre_completo;
+    public void setfullName(String fullName) {
+        this.fullName = fullName;
     }
-   
-    
 }

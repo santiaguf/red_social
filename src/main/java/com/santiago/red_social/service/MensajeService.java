@@ -16,22 +16,22 @@ import com.santiago.red_social.model.Usuario;
  * @author santiaguf
  */
 public class MensajeService {
-  
-    public static void crearMensaje(Usuario usuario, Scanner sc){
+
+    public static void createMessage(Usuario usuario, Scanner sc){
         System.out.println("Escribe el mensaje, máx 280 caracteres");
-        String el_mensaje = sc.next();
-        Mensaje mensaje = new Mensaje(el_mensaje, usuario.getId_usuario());
-        MensajeDAO.crearMensajeDB(mensaje);
+        String messageText = sc.next();
+        Mensaje message = new Mensaje(messageText, usuario.getUserId());
+        MensajeDAO.createMessageDB(message);
     }
- 
-    public static void listarmensajes(){
-        MensajeDAO.listarmensajesDB();
+
+    public static void listMessages(){
+        MensajeDAO.listMessagesDB();
     }
-    
-    public static void borrarMensaje(Usuario usuario, Scanner sc){
+
+    public static void deleteMessage(Usuario usuario, Scanner sc){
         System.out.println("Indica el id del mensaje a borrar");
-        int id_mensaje = sc.nextInt();
-        Mensaje mensaje = new Mensaje(id_mensaje,usuario.getId_usuario());
-        MensajeDAO.borrarMensajeDB(mensaje);
+        int messageId = sc.nextInt();
+        Mensaje message = new Mensaje(messageId, usuario.getUserId());
+        MensajeDAO.deleteMessageDB(message);
     }
 }

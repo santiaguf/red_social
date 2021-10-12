@@ -21,13 +21,13 @@ public class Inicio {
     public static void main(String[] args) {
         //create an instance of Scanner class to read user input
         Scanner sc = new Scanner(System.in);
-        menuPrincipal(sc);
+        mainMenu(sc);
         sc.close();
     }
 
-    public static void menuPrincipal(Scanner sc){
+    public static void mainMenu(Scanner sc){
 
-        int opcion = 0;
+        int option = 0;
 
         //First Menu
         do{
@@ -37,22 +37,22 @@ public class Inicio {
                 + "2. Iniciar sesión \n"
                 + "3. salir \n");
             //Read user input
-            opcion = sc.nextInt();
+            option = sc.nextInt();
 
-            switch (opcion){
+            switch (option){
                 case 1:
-                    UsuarioService.crearUsuario(sc);
+                    UsuarioService.createUser(sc);
                     break;
                 case 2:
-                    Usuario resultado = UsuarioService.iniciarSesion(sc);
-                    if(resultado.getId_usuario() > 0){
+                    Usuario resultado = UsuarioService.login(sc);
+                    if(resultado.getUserId() > 0){
                         MenuSesion.menuSesion(resultado, sc);
                     }
                     break;
                 default:
                     break;
             }
-        }while(opcion != 3);
+        }while(option != 3);
     }
 
 }

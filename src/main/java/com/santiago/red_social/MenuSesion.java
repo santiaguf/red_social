@@ -9,12 +9,12 @@ import com.santiago.red_social.service.UsuarioService;
 public class MenuSesion {
 
     public static void menuSesion(Usuario usuario, Scanner sc){
-        int opcion = 0;
+        int option = 0;
 
         //menu when session starts
         do{
             System.out.println("=================== \n"
-            + "\n red social, hola "+usuario.getNombre_completo()+" \n"
+            + "\n red social, hola "+usuario.getFullName()+" \n"
             + "1. escribir mensaje \n"
             + "2. leer mensajes \n"
             + "3. eliminar mensaje \n"
@@ -22,27 +22,27 @@ public class MenuSesion {
             + "5. ver usuarios \n"
             + "6. cerrar sesión \n");
             //Read user input
-            opcion = sc.nextInt();
+            option = sc.nextInt();
 
-            switch (opcion){
+            switch (option){
                 case 1:
-                    MensajeService.crearMensaje(usuario, sc);
+                    MensajeService.createMessage(usuario, sc);
                     break;
                 case 2:
-                    MensajeService.listarmensajes();
+                    MensajeService.listMessages();
                     break;
                 case 3:
-                    MensajeService.borrarMensaje(usuario, sc);
+                    MensajeService.deleteMessage(usuario, sc);
                     break;
                 case 4:
-                    UsuarioService.editarUsuario(usuario, sc);
+                    UsuarioService.editUser(usuario, sc);
                     break;
                 case 5:
-                    UsuarioService.listarUsuarios();
+                    UsuarioService.listUsers();
                     break;
                 default:
                     break;
             }
-        }while(opcion != 6);
+        }while(option != 6);
     }
 }

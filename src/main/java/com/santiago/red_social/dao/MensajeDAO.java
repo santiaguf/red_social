@@ -18,26 +18,26 @@ import com.santiago.red_social.model.Mensaje;
  * @author santiaguf
  */
 public class MensajeDAO {
-    public static void crearMensajeDB(Mensaje mensaje){
+    public static void createMessageDB(Mensaje mensaje){
         Conexion db_connect = new Conexion();
-	try (Connection conexion = db_connect.get_connection()) {
-            PreparedStatement ps=null;
-            try {
-                String query="insert into mensajes(id_usuario,mensaje,fecha) values (?,?,CURRENT_TIMESTAMP)";
-                ps=conexion.prepareStatement(query);
-                ps.setInt(1, mensaje.getId_usuario());
-                ps.setString(2, mensaje.getMensaje());
-                ps.executeUpdate();
-                System.out.println("\n mensaje creado \n");
-            } catch (SQLException e) {
-                System.out.println("\n no se pudo crear el mensaje \n");
-            }
-	}catch(Exception ex){
+        try (Connection conexion = db_connect.get_connection()) {
+                PreparedStatement ps=null;
+                try {
+                    String query="insert into mensajes(id_usuario,mensaje,fecha) values (?,?,CURRENT_TIMESTAMP)";
+                    ps=conexion.prepareStatement(query);
+                    ps.setInt(1, mensaje.getUserId());
+                    ps.setString(2, mensaje.getMessage());
+                    ps.executeUpdate();
+                    System.out.println("\n mensaje creado \n");
+                } catch (SQLException e) {
+                    System.out.println("\n no se pudo crear el mensaje \n");
+                }
+        }catch(Exception ex){
             System.out.println(ex);
-        } 
+        }
     }
 
-    public static void listarmensajesDB(){
+    public static void listMessagesDB(){
         Conexion db_connect = new Conexion();
         try(Connection conexion = db_connect.get_connection()){
             PreparedStatement ps=null;
@@ -55,28 +55,28 @@ public class MensajeDAO {
             } catch (SQLException e) {
                     System.out.println("\n no se pudo listar los mensajes \n");
             }
-        	}catch(Exception ex){
+        }catch(Exception ex){
             System.out.println(ex);
-        }     
-    }  
-    
-    public static void borrarMensajeDB(Mensaje mensaje){
+        }
+    }
+
+    public static void deleteMessageDB(Mensaje mensaje){
         Conexion db_connect = new Conexion();
         try(Connection conexion = db_connect.get_connection()){
             PreparedStatement ps=null;
             try {
                 String query="delete from mensajes where id_mensaje = ? and id_usuario = ?";
                 ps=conexion.prepareStatement(query);
-                ps.setInt(1, mensaje.getId_mensaje());
-                ps.setInt(2, mensaje.getId_usuario());
+                ps.setInt(1, mensaje.getmessageId());
+                ps.setInt(2, mensaje.getUserId());
                 ps.executeUpdate();
                 System.out.println("\n mensaje eliminado \n");
             } catch (SQLException e) {
                 System.out.println("\n no se pudo eliminar el mensaje \n");
             }
-        	}catch(Exception ex){
+        }catch(Exception ex){
             System.out.println(ex);
-        }     
-    }    
-    
+        }
+    }
+
 }

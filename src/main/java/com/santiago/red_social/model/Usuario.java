@@ -11,72 +11,71 @@ package com.santiago.red_social.model;
  */
 public class Usuario {
     //atributos
-    int id_usuario;
-    String correo;
-    String clave;
-    String nombre_completo;
-    
+    int userId;
+    String email;
+    String password;
+    String fullName;
+
     //constructores
     public Usuario(){
     }
 
     //constructor para borrar usuario
-    public Usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public Usuario(int userId) {
+        this.userId = userId;
     }
-    
+
     //constructor para iniciar sesión
-    public Usuario(String correo, String clave) {
-        this.correo = correo;
-        this.clave = clave;
-    } 
-    
+    public Usuario(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     //constructor para traer datos de inicio de sesión
-     public Usuario(int id_usuario, String correo, String nombre_completo) {
-        this.id_usuario = id_usuario;
-        this.correo = correo;
-        this.nombre_completo = nombre_completo;
-    }  
-    
+    public Usuario(int userId, String email, String fullName) {
+        this.userId = userId;
+        this.email = email;
+        this.fullName = fullName;
+    }
+
     //constructor para crear, editar usuario
-    public Usuario(int id_usuario, String correo, String clave, String nombre_completo) {
-        this.id_usuario = id_usuario;
-        this.correo = correo;
-        this.clave = clave;
-        this.nombre_completo = nombre_completo;
+    public Usuario(int userId, String email, String password, String fullName) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
     }
-        
+
     //getters y setters
-    public int getId_usuario() {
-        return id_usuario;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getClave() {
-        return clave;
+    public String getPassword() {
+        return password;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getNombre_completo() {
-        return nombre_completo;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setNombre_completo(String nombre_completo) {
-        this.nombre_completo = nombre_completo;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
-     
 }

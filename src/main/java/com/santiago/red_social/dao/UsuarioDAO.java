@@ -18,31 +18,30 @@ import com.santiago.red_social.model.Usuario;
  * @author santiaguf
  */
 public class UsuarioDAO {
-    
-    //métodos crud
-    public static void crearUsuarioDB(Usuario usuario){
-        Conexion db_connect = new Conexion();
-	try (Connection conexion = db_connect.get_connection()) {
-            PreparedStatement ps=null;
-            try {
-                String query="insert into usuarios(correo,clave,nombre_completo) values (?,?,?)";
-                ps=conexion.prepareStatement(query);
-                ps.setString(1, usuario.getCorreo());
-                ps.setString(2, usuario.getClave());
-                ps.setString(3, usuario.getNombre_completo());    
-                ps.executeUpdate();
-                System.out.println("\n usuario creado, ahora puedes iniciar sesión \n");
-            } catch (SQLException e) {
-                System.out.println("\n no se pudo crear el usuario \n");
-            }
-	}catch(Exception ex){
+
+    public static void createUserOnDB(Usuario usuario){
+        Conexion dbConnection = new Conexion();
+        try (Connection conexion = dbConnection.get_connection()) {
+                PreparedStatement ps=null;
+                try {
+                    String query="insert into usuarios(correo,clave,nombre_completo) values (?,?,?)";
+                    ps=conexion.prepareStatement(query);
+                    ps.setString(1, usuario.getEmail());
+                    ps.setString(2, usuario.getPassword());
+                    ps.setString(3, usuario.getFullName());
+                    ps.executeUpdate();
+                    System.out.println("\n usuario creado, ahora puedes iniciar sesión \n");
+                } catch (SQLException e) {
+                    System.out.println("\n no se pudo crear el usuario \n");
+                }
+        }catch(Exception ex){
             System.out.println(ex);
-        }        
-    }   
-    
-    public static void leerUsuariosDB(){
-        Conexion db_connect = new Conexion();
-        try(Connection conexion = db_connect.get_connection();){
+        }
+    }
+
+    public static void listUsersOnDB(){
+        Conexion dbConnection = new Conexion();
+        try(Connection conexion = dbConnection.get_connection();){
             PreparedStatement ps=null;
             ResultSet rs=null;
             try {
@@ -57,49 +56,49 @@ public class UsuarioDAO {
             } catch (SQLException e) {
                     System.out.println("\n no se pudo listar los usuarios \n");
             }
-        	}catch(Exception ex){
+        }catch(Exception ex){
             System.out.println(ex);
-        }     
+        }
     }
-       
-    public static void editarUsuarioDB(Usuario usuario){
-        Conexion db_connect = new Conexion();
-	try (Connection conexion = db_connect.get_connection()) {
+
+    public static void editUserOnDB(Usuario usuario){
+        Conexion dbConnection = new Conexion();
+        try (Connection conexion = dbConnection.get_connection()) {
             PreparedStatement ps=null;
             try {
                 String query="update usuarios set correo = ?, clave = ?, nombre_completo = ? where id_usuario = ?";
                 ps=conexion.prepareStatement(query);
-                ps.setString(1, usuario.getCorreo());
-                ps.setString(2, usuario.getClave());
-                ps.setString(3, usuario.getNombre_completo());
-                ps.setInt(4, usuario.getId_usuario());
+                ps.setString(1, usuario.getEmail());
+                ps.setString(2, usuario.getPassword());
+                ps.setString(3, usuario.getFullName());
+                ps.setInt(4, usuario.getUserId());
                 ps.executeUpdate();
                 System.out.println("\n usuario actualizado \n");
             } catch (SQLException e) {
                 System.out.println("\n no se pudo actualizar el usuario \n");
             }
-	}catch(Exception ex){
-            System.out.println(ex);
-        }        
-    } 
-    
-    public static Usuario iniciarSesionDB(Usuario usuario){
-        Conexion db_connect = new Conexion();
-        try(Connection conexion = db_connect.get_connection();){
+        }catch(Exception ex){
+                System.out.println(ex);
+        }
+    }
+
+    public static Usuario loginDB(Usuario usuario){
+        Conexion dbConnection = new Conexion();
+        try(Connection conexion = dbConnection.get_connection();){
             PreparedStatement ps=null;
             ResultSet rs=null;
             try {
                 String query="select * from usuarios where correo=? and clave= ?";
                 ps=conexion.prepareStatement(query);
-                ps.setString(1, usuario.getCorreo());
-                ps.setString(2, usuario.getClave());
+                ps.setString(1, usuario.getEmail());
+                ps.setString(2, usuario.getPassword());
                 rs=ps.executeQuery();
                 Usuario login = new Usuario();
                 if(rs.next()){
                     System.out.println("login correcto!");
-                    login.setId_usuario(rs.getInt("id_usuario"));
-                    login.setCorreo(rs.getString("correo"));
-                    login.setNombre_completo(rs.getString("nombre_completo"));
+                    login.setUserId(rs.getInt("id_usuario"));
+                    login.setEmail(rs.getString("correo"));
+                    login.setFullName(rs.getString("nombre_completo"));
                 }else{
                     System.out.println("login failed");
                 }
@@ -108,11 +107,11 @@ public class UsuarioDAO {
             } catch (SQLException e) {
                     System.out.println("\n no se pudo autenticar con el servidor \n");
             }
-        	}catch(Exception ex){
+        }catch(Exception ex){
             System.out.println(ex);
-        } 
+        }
         //si no se logra iniciar sesión devolvemos un objeto vacío
         return null;
     }
-    
+
 }
