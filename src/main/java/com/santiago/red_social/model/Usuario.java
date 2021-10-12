@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.santiago.red_social;
+package com.santiago.red_social.model;
 
 /**
  *
- * @author ohmyfi
+ * @author santiaguf
  */
 public class Usuario {
     //atributos

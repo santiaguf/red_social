@@ -3,38 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.santiago.red_social;
+package com.santiago.red_social.model;
 
 /**
  *
- * @author ohmyfi
+ * @author santiaguf
  */
 public class Mensaje {
-    //atributos
+    //attributes
     int id_mensaje;
     String mensaje;
     String fecha;
-    //atributos foráneos
+    //foreign attributes
     int id_usuario;
     String nombre_completo;
     
-    //constructores
+    //constructors
     public Mensaje(){
     }
 
-    //borrar mensaje por su ID
+    //delete message by Id
     public Mensaje(int id_mensaje, int id_usuario) {
         this.id_mensaje = id_mensaje;
         this.id_usuario = id_usuario;
     }
     
-    //crear mensaje
+    //create message
     public Mensaje(String mensaje, int id_usuario) {
         this.mensaje = mensaje;
         this.id_usuario = id_usuario;
     }
     
-    //listar mensajes
+    //list messages
     public Mensaje(int id_mensaje, String mensaje, String fecha, String nombre_completo) {
         this.id_mensaje = id_mensaje;
         this.mensaje = mensaje;
@@ -42,7 +42,7 @@ public class Mensaje {
         this.nombre_completo = nombre_completo;
     }
     
-    //getters y setters
+    //getters and setters
     public int getId_mensaje() {
         return id_mensaje;
     }
