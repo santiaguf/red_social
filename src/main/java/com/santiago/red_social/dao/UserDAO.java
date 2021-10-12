@@ -19,6 +19,14 @@ import database.DbConnection;
  * @author santiaguf
  */
 public class UserDAO {
+	
+	static String cantCreateUser = "\n no se pudo crear el usuario \n";
+	static String createdUser = "\n usuario creado, ahora puedes iniciar sesión \n";
+	static String cantListUsers = "\n no se pudo listar los usuarios \n";
+	static String updatedUser = "\n usuario actualizado \n";
+	static String cantUpdateUser = "\n no se pudo actualizar el usuario \n";
+	static String loginFailed = "login failed";
+	static String dbAuthFailed = "\n no se pudo autenticar con el servidor \n";
 
     public static void createUserOnDB(User usuario){
         DbConnection dbConnection = new DbConnection();
@@ -31,9 +39,9 @@ public class UserDAO {
                     ps.setString(2, usuario.getPassword());
                     ps.setString(3, usuario.getFullName());
                     ps.executeUpdate();
-                    System.out.println("\n usuario creado, ahora puedes iniciar sesión \n");
+                    System.out.println(createdUser);
                 } catch (SQLException e) {
-                    System.out.println("\n no se pudo crear el usuario \n");
+                    System.out.println(cantCreateUser);
                 }
         }catch(Exception ex){
             System.out.println(ex);
@@ -55,7 +63,7 @@ public class UserDAO {
                     System.out.print("Nombre: "+rs.getString("nombre_completo")+" ] ");
                 }
             } catch (SQLException e) {
-                    System.out.println("\n no se pudo listar los usuarios \n");
+                    System.out.println(cantListUsers);
             }
         }catch(Exception ex){
             System.out.println(ex);
@@ -74,9 +82,9 @@ public class UserDAO {
                 ps.setString(3, usuario.getFullName());
                 ps.setInt(4, usuario.getUserId());
                 ps.executeUpdate();
-                System.out.println("\n usuario actualizado \n");
+                System.out.println(updatedUser);
             } catch (SQLException e) {
-                System.out.println("\n no se pudo actualizar el usuario \n");
+                System.out.println(cantUpdateUser);
             }
         }catch(Exception ex){
                 System.out.println(ex);
@@ -101,12 +109,12 @@ public class UserDAO {
                     login.setEmail(rs.getString("correo"));
                     login.setFullName(rs.getString("nombre_completo"));
                 }else{
-                    System.out.println("login failed");
+                    System.out.println(loginFailed);
                 }
                 //retornamos el objeto usuario con los datos o vacío
                 return login;
             } catch (SQLException e) {
-                    System.out.println("\n no se pudo autenticar con el servidor \n");
+                    System.out.println(dbAuthFailed);
             }
         }catch(Exception ex){
             System.out.println(ex);

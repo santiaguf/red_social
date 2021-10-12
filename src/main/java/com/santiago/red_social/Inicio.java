@@ -16,6 +16,12 @@ import com.santiago.red_social.service.UserService;
  * @author santiaguf
  */
 public class Inicio {
+	
+	static String mainMenuMessage = ("=================== \n"
+            + "\n Mini red social \n"
+            + "1. Registrarse \n"
+            + "2. Iniciar sesión \n"
+            + "3. salir \n");
 
     public static void main(String[] args) {
         //create an instance of Scanner class to read user input
@@ -30,11 +36,7 @@ public class Inicio {
 
         //First Menu
         do{
-            System.out.println("=================== \n"
-                + "\n Mini red social \n"
-                + "1. Registrarse \n"
-                + "2. Iniciar sesión \n"
-                + "3. salir \n");
+            System.out.println(mainMenuMessage);
             //Read user input
             option = sc.nextInt();
 

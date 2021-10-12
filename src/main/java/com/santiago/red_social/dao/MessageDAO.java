@@ -19,6 +19,13 @@ import database.DbConnection;
  * @author santiaguf
  */
 public class MessageDAO {
+	
+	static String cantCreateMessage = "\n no se pudo crear el mensaje \n";
+	static String createdMessage = "\n mensaje creado \n";
+	static String cantListMessages = "\n no se pudo listar los mensajes \n";
+	static String deletedMessage = "\n mensaje eliminado \n";
+	static String cantDeleteMessages = "\n no se pudo eliminar el mensaje \n";
+	
     public static void createMessageDB(Message mensaje){
         DbConnection dbConnection = new DbConnection();
         try (Connection conexion = dbConnection.get_connection()) {
@@ -29,9 +36,9 @@ public class MessageDAO {
                     ps.setInt(1, mensaje.getUserId());
                     ps.setString(2, mensaje.getMessage());
                     ps.executeUpdate();
-                    System.out.println("\n mensaje creado \n");
+                    System.out.println(createdMessage);
                 } catch (SQLException e) {
-                    System.out.println("\n no se pudo crear el mensaje \n");
+                    System.out.println(cantCreateMessage);
                 }
         }catch(Exception ex){
             System.out.println(ex);
@@ -54,7 +61,7 @@ public class MessageDAO {
                     System.out.print("Autor: "+rs.getString("nombre_completo")+" ] ");
                 }
             } catch (SQLException e) {
-                    System.out.println("\n no se pudo listar los mensajes \n");
+                    System.out.println(cantListMessages);
             }
         }catch(Exception ex){
             System.out.println(ex);
@@ -71,9 +78,9 @@ public class MessageDAO {
                 ps.setInt(1, mensaje.getmessageId());
                 ps.setInt(2, mensaje.getUserId());
                 ps.executeUpdate();
-                System.out.println("\n mensaje eliminado \n");
+                System.out.println(deletedMessage);
             } catch (SQLException e) {
-                System.out.println("\n no se pudo eliminar el mensaje \n");
+                System.out.println(cantDeleteMessages);
             }
         }catch(Exception ex){
             System.out.println(ex);
