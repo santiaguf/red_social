@@ -17,14 +17,14 @@
             <version>1.6</version>
         </dependency>
         <dependency>
-		    <groupId>io.github.cdimascio</groupId>
-		    <artifactId>java-dotenv</artifactId>
-		    <version>5.2.2</version>
-		</dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.1.0</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 </project>
